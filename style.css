@@ -274,7 +274,7 @@ main {
 
 .card {
     box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
-    background: #fff;
+    background: #ec3f3f;
     padding: 1rem;
     border-radius: 3px;
 }
@@ -297,7 +297,7 @@ main {
 }
 
 .card-progress small {
-    color: #777;
+    color: #000000;
     font-size: .8rem;
     font-weight: 600;
 }
