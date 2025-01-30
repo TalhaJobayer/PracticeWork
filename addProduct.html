@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6">
+  <!-- modal -->
+   <!-- You can open the modal using ID.showModal() method -->
+<div class="flex justify-end">
+    <button class="btn  bg-blue-500 " onclick="my_modal_3.showModal()">Add Product</button>
+    <button class="btn  bg-blue-500 " onclick="my_modal_5.showModal()">Add Category</button>
+</div>
+<!-- add Product modal start -->
+<dialog id="my_modal_3" class="modal">
+    <div class="modal-box">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <div class="menu bg-base-200 text-base-content min-h-full w-96 p-6">
+        <h2 class="text-xl font-bold mb-4">Add New Product</h2>
+        
+        <!-- Product Form -->
+        <form id="productForm" class="space-y-4">
+            <div>
+                <label class="label"><span class="label-text">Product Name</span></label>
+                <input type="text" id="productName" class="input input-bordered w-full" placeholder="Enter product name" required>
+            </div>
+  
+            <div>
+                <label class="label"><span class="label-text">Category</span></label>
+                <select id="productCategory" class="select select-bordered w-full" required>
+                    <option value="">Select Category</option>
+                    <option value="Smartphone">Smartphone</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Headphones">Headphones</option>
+                    <option value="Accessories">Accessories</option>
+                </select>
+            </div>
+  
+            <div>
+                <label class="label"><span class="label-text">Price ($)</span></label>
+                <input type="number" id="productPrice" class="input input-bordered w-full" placeholder="Enter price" min="1" required>
+            </div>
+  
+            <div>
+                <label class="label"><span class="label-text">Stock Quantity</span></label>
+                <input type="number" id="productStock" class="input input-bordered w-full" placeholder="Enter stock quantity" min="0" required>
+            </div>
+  
+            <div>
+                <label class="label"><span class="label-text">Product Rating</span></label>
+                <input type="number" id="productRating" class="input input-bordered w-full" placeholder="Enter rating (1-5)" min="1" max="5" step="0.1" required>
+            </div>
+  
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success w-full">Add Product</button>
+        </form>
+    </div>
+    </div>
+  </dialog>
+<!-- add Product modal end -->
+<!-- add catagory modal start -->
+<dialog id="my_modal_5" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div class="menu bg-base-200 text-base-content min-h-full w-96 p-6">
+        <h2 class="text-xl font-bold mb-4">Add Category</h2>
+    
+        <!-- Category Form -->
+        <form id="categoryForm" class="space-y-4">
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                    <span class="label-text">Category Name</span>
+                </label>
+                <input type="text" id="categoryName" placeholder="Enter category" class="input input-bordered w-full max-w-xs" required>
+            </div>
+    
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-full">Add Category</button>
+        </form>
+    </div>
+  </div>
+</dialog>
+  <!-- add catagory modal end -->
+
+  
+  
+
+    <!-- Product Table -->
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Product Details</h2>
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                    <!-- Product rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("productForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get values from form
+            const productName = document.getElementById("productName").value;
+            const productCategory = document.getElementById("productCategory").value;
+            const productPrice = document.getElementById("productPrice").value;
+            const productStock = document.getElementById("productStock").value;
+            const productRating = document.getElementById("productRating").value;
+
+            // Validate inputs
+            if (!productName || !productCategory || !productPrice || !productStock || !productRating) {
+                alert("All fields are required!");
+                return;
+            }
+
+            // Insert into the table
+            const tableBody = document.getElementById("productTableBody");
+            const rowCount = tableBody.rows.length + 1;
+            const newRow = `
+                <tr>
+                    <th>${rowCount}</th>
+                    <td>${productName}</td>
+                    <td>${productCategory}</td>
+                    <td>$${parseFloat(productPrice).toFixed(2)}</td>
+                    <td>${productStock}</td>
+                    <td>${productRating} ⭐</td>
+                </tr>
+            `;
+            tableBody.innerHTML += newRow;
+
+            // Reset form
+            document.getElementById("productForm").reset();
+
+            // Close the drawer
+            document.getElementById("my-drawer-4").checked = false;
+        });
+    </script>
+    <!-- add catagory form validation code -->
+    <script>
+        document.getElementById("categoryForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+    
+            // Get input value
+            const categoryName = document.getElementById("categoryName").value.trim();
+    
+            // Validate input
+            if (categoryName === "") {
+                alert("Category name is required!");
+                return;
+            }
+    
+            alert(`Category "${categoryName}" added successfully!`);
+    
+            // Reset form
+            document.getElementById("categoryForm").reset();
+        });
+    </script>
+    <!-- add catagory form validation code -->
+
+</body>
+</html>
