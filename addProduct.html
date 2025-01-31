@@ -11,65 +11,55 @@
   <!-- modal -->
    <!-- You can open the modal using ID.showModal() method -->
 <div class="flex justify-end">
-    <button class="btn  bg-blue-500 " onclick="my_modal_3.showModal()">Add Product</button>
-    <button class="btn  bg-blue-500 " onclick="my_modal_5.showModal()">Add Category</button>
+    <button class="btn  bg-blue-500 " onclick="my_modal_3.showModal()">Add Category</button>
+    <button class="btn  bg-blue-500 " onclick="my_modal_5.showModal()">Add Parent Category</button>
+    <button class="btn" onclick="my_modal_6.showModal()">Add Product</button>
 </div>
-<!-- add Product modal start -->
+<!-- Add Category modal start -->
 <dialog id="my_modal_3" class="modal">
     <div class="modal-box">
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
-      <div class="menu bg-base-200 text-base-content min-h-full w-96 p-6">
-        <h2 class="text-xl font-bold mb-4">Add New Product</h2>
+      <div class="menu bg-base-200 text-base-content min-h-full w-full p-6">
+        <h2 class="text-xl font-bold mb-4">Add New Catagory</h2>
         
-        <!-- Product Form -->
+        <!-- catagory Form -->
         <form id="productForm" class="space-y-4">
             <div>
-                <label class="label"><span class="label-text">Product Name</span></label>
+                <label class="label"><span class="label-text">Catagory  Name</span></label>
                 <input type="text" id="productName" class="input input-bordered w-full" placeholder="Enter product name" required>
             </div>
-  
-            <div>
-                <label class="label"><span class="label-text">Category</span></label>
-                <select id="productCategory" class="select select-bordered w-full" required>
-                    <option value="">Select Category</option>
-                    <option value="Smartphone">Smartphone</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Headphones">Headphones</option>
-                    <option value="Accessories">Accessories</option>
-                </select>
+            <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+                <!-- Input Box -->
+                <input
+                    id="selectedCategory"
+                    type="text"
+                    readonly
+                    class="w-full p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Selected category will appear here"
+                />
+        
+                <!-- Category List Container -->
+                <div id="categoryList" class="space-y-2"></div>
             </div>
   
-            <div>
-                <label class="label"><span class="label-text">Price ($)</span></label>
-                <input type="number" id="productPrice" class="input input-bordered w-full" placeholder="Enter price" min="1" required>
-            </div>
-  
-            <div>
-                <label class="label"><span class="label-text">Stock Quantity</span></label>
-                <input type="number" id="productStock" class="input input-bordered w-full" placeholder="Enter stock quantity" min="0" required>
-            </div>
-  
-            <div>
-                <label class="label"><span class="label-text">Product Rating</span></label>
-                <input type="number" id="productRating" class="input input-bordered w-full" placeholder="Enter rating (1-5)" min="1" max="5" step="0.1" required>
-            </div>
+            
   
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-success w-full">Add Product</button>
+            <button type="submit" class="btn btn-success w-full">Add Catagory</button>
         </form>
     </div>
     </div>
   </dialog>
-<!-- add Product modal end -->
-<!-- add catagory modal start -->
+<!-- Add Category modal end -->
+<!-- add parent catagory modal start -->
 <dialog id="my_modal_5" class="modal">
   <div class="modal-box">
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
-    <div class="menu bg-base-200 text-base-content min-h-full w-96 p-6">
+    <div class="menu bg-base-200 text-base-content min-h-full w-full p-6">
         <h2 class="text-xl font-bold mb-4">Add Category</h2>
     
         <!-- Category Form -->
@@ -87,73 +77,95 @@
     </div>
   </div>
 </dialog>
-  <!-- add catagory modal end -->
+  <!-- Add Parent Category modal end -->
 
-  
-  
+<!-- add product modal start -->
 
-    <!-- Product Table -->
-    <div class="mt-8">
-        <h2 class="text-2xl font-bold mb-4">Product Details</h2>
-        <div class="overflow-x-auto">
-            <table class="table table-zebra w-full">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Rating</th>
-                    </tr>
-                </thead>
-                <tbody id="productTableBody">
-                    <!-- Product rows will be added here dynamically -->
-                </tbody>
-            </table>
-        </div>
+
+<dialog id="my_modal_6" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl">
+        <h2 class="text-2xl font-bold mb-4 text-center">Add Product</h2>
+
+        <form id="productForm" class="space-y-4">
+            <!-- Product Name -->
+            <div>
+                <label class="label"><span class="label-text">Product Name</span></label>
+                <input type="text" id="productName" class="input input-bordered w-full" placeholder="Enter product name" required>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label class="label"><span class="label-text">Product Description</span></label>
+                <textarea id="productDescription" class="textarea textarea-bordered w-full" placeholder="Enter product description" required></textarea>
+            </div>
+
+            <!-- Image Upload -->
+            <div>
+                <label class="label"><span class="label-text">Upload Product Image</span></label>
+                <input type="file" id="productImage" class="file-input file-input-bordered w-full" accept="image/*" required>
+            </div>
+
+            <!-- Product Barcode -->
+            <div>
+                <label class="label"><span class="label-text">Product Barcode</span></label>
+                <input type="text" id="productBarcode" class="input input-bordered w-full" placeholder="Enter barcode" pattern="\d+" title="Only numbers allowed" required>
+            </div>
+
+            <!-- Price & Sell Price -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="label"><span class="label-text">Price ($)</span></label>
+                    <input type="number" id="productPrice" class="input input-bordered w-full" placeholder="Enter price" min="1" required>
+                </div>
+                <div>
+                    <label class="label"><span class="label-text">Sell Price ($)</span></label>
+                    <input type="number" id="productSellPrice" class="input input-bordered w-full" placeholder="Enter sell price" min="1" required>
+                </div>
+            </div>
+
+            <!-- Product Slug -->
+            <div>
+                <label class="label"><span class="label-text">Product Slug</span></label>
+                <input type="text" id="productSlug" class="input input-bordered w-full" placeholder="Enter slug" pattern="^[a-z0-9-]+$" title="Only lowercase letters, numbers, and dashes allowed" required>
+            </div>
+
+            <!-- Product Quantity -->
+            <div>
+                <label class="label"><span class="label-text">Product Quantity</span></label>
+                <input type="number" id="productQuantity" class="input input-bordered w-full" placeholder="Enter quantity" min="1" required>
+            </div>
+
+            <!-- Product Video Upload -->
+            <div>
+                <label class="label"><span class="label-text">Upload Product Video</span></label>
+                <input type="file" id="productVideo" class="file-input file-input-bordered w-full" accept="video/*">
+            </div>
+
+            <!-- Product Tags -->
+            <div>
+                <label class="label"><span class="label-text">Product Tags (Comma-separated)</span></label>
+                <input type="text" id="productTags" class="input input-bordered w-full" placeholder="e.g. #electronics, #phone, #accessories" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-full">Add Product</button>
+        </form>
     </div>
+  </div>
+</dialog>
 
-    <script>
-        document.getElementById("productForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+<!-- add product modal end -->
+  
+  
 
-            // Get values from form
-            const productName = document.getElementById("productName").value;
-            const productCategory = document.getElementById("productCategory").value;
-            const productPrice = document.getElementById("productPrice").value;
-            const productStock = document.getElementById("productStock").value;
-            const productRating = document.getElementById("productRating").value;
+ 
 
-            // Validate inputs
-            if (!productName || !productCategory || !productPrice || !productStock || !productRating) {
-                alert("All fields are required!");
-                return;
-            }
-
-            // Insert into the table
-            const tableBody = document.getElementById("productTableBody");
-            const rowCount = tableBody.rows.length + 1;
-            const newRow = `
-                <tr>
-                    <th>${rowCount}</th>
-                    <td>${productName}</td>
-                    <td>${productCategory}</td>
-                    <td>$${parseFloat(productPrice).toFixed(2)}</td>
-                    <td>${productStock}</td>
-                    <td>${productRating} ⭐</td>
-                </tr>
-            `;
-            tableBody.innerHTML += newRow;
-
-            // Reset form
-            document.getElementById("productForm").reset();
-
-            // Close the drawer
-            document.getElementById("my-drawer-4").checked = false;
-        });
-    </script>
-    <!-- add catagory form validation code -->
+  
+    <!-- add parent catagory form validation code -->
     <script>
         document.getElementById("categoryForm").addEventListener("submit", function(event) {
             event.preventDefault();
@@ -173,7 +185,121 @@
             document.getElementById("categoryForm").reset();
         });
     </script>
-    <!-- add catagory form validation code -->
+    <!-- parent catagory form validation code -->
+
+    <!-- list control of child catagory start-->
+    <script>
+        // JSON Data
+        const data = {
+    "categories": [
+        "Winter Products",
+        "Islamic Items",
+        "Best Selling Items",
+        {
+            "Personal Development": [
+                {
+                    "Personal Development For Women": [
+                        {
+                            "Ledis T-shirt": [
+                                {
+                                    "Whit T-shirt": [
+                                        {
+                                            "Half T-shirt": []
+                                        },
+                                        {
+                                            "Full T-shirt": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Personal Development For Men": []
+                }
+            ]
+        },
+        "Men's Fashion",
+        "Women's Fashion"
+    ]
+};
+
+        function createCategoryList(categories, parentElement, parentPath = "") {
+            categories.forEach(category => {
+                if (typeof category === 'string') {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.textContent = category;
+                    categoryDiv.className = 'font-semibold cursor-pointer hover:text-blue-600 relative';
+                    categoryDiv.onclick = () => selectCategory(parentPath + category);
+                    parentElement.appendChild(categoryDiv);
+                } else if (typeof category === 'object') {
+                    for (const [parent, subcategories] of Object.entries(category)) {
+                        const parentDiv = document.createElement('div');
+                        parentDiv.textContent = parent;
+                        parentDiv.className = 'font-semibold cursor-pointer hover:text-blue-600 relative';
+                        parentElement.appendChild(parentDiv);
+
+                        const subcategoryContainer = document.createElement('div');
+                        subcategoryContainer.className = 'hidden pl-4 space-y-2';
+                        parentDiv.appendChild(subcategoryContainer);
+
+                        createCategoryList(subcategories, subcategoryContainer, parentPath + parent + " > ");
+
+                        parentDiv.onmouseover = () => subcategoryContainer.classList.remove('hidden');
+                        parentDiv.onmouseleave = () => subcategoryContainer.classList.add('hidden');
+                        parentDiv.onclick = (e) => {
+                            e.stopPropagation(); // Prevents immediate closing of dropdown
+                            selectCategory(parentPath + parent);
+                        };
+                    }
+                }
+            });
+        }
+
+        function selectCategory(category) {
+            document.getElementById('selectedCategory').value = category;
+        }
+
+        const categoryListContainer = document.getElementById('categoryList');
+        createCategoryList(data.categories, categoryListContainer);
+</script>
+    <!-- list control of child catagory end -->
+    <!-- add product script start -->
+
+    <script>
+        document.getElementById("productForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get values from form
+            const productName = document.getElementById("productName").value.trim();
+            const productDescription = document.getElementById("productDescription").value.trim();
+            const productImage = document.getElementById("productImage").files.length;
+            const productBarcode = document.getElementById("productBarcode").value.trim();
+            const productPrice = document.getElementById("productPrice").value.trim();
+            const productSellPrice = document.getElementById("productSellPrice").value.trim();
+            const productSlug = document.getElementById("productSlug").value.trim();
+            const productQuantity = document.getElementById("productQuantity").value.trim();
+            const productTags = document.getElementById("productTags").value.trim();
+            
+            // Validation
+            if (!productName || !productDescription || !productBarcode || !productPrice || !productSellPrice || !productSlug || !productQuantity || !productTags || productImage === 0) {
+                alert("All fields are required!");
+                return;
+            }
+
+            if (parseFloat(productSellPrice) > parseFloat(productPrice)) {
+                alert("Sell price cannot be greater than the original price!");
+                return;
+            }
+
+            alert(`Product "${productName}" added successfully!`);
+
+            // Reset form
+            document.getElementById("productForm").reset();
+        });
+    </script>
+    <!-- add product script end -->
 
 </body>
 </html>
