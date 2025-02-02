@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Orders</title>
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Flowbite CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.3.0/dist/flowbite.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- ApexCharts CDN -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -17,7 +19,7 @@
 
 <body class="bg-gray-50">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased">
-        <!-- Sidebar start -->
+        <!-- Sidebar -->
         <div class="fixed flex flex-col top-0 left-0 w-60 bg-white h-full border-r">
             <div class="flex items-center justify-center h-14 border-b">
                 <div>
@@ -32,7 +34,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="Dashbord.html"
+                        <a href="oviDashbord.html"
                             class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
                             <span class="inline-flex justify-center items-center ml-4 text-gray-800">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -166,7 +168,7 @@
                     </li>
 
                     <li>
-                        <a href="#"
+                        <a href="Stuff.html"
                             class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
                             <span class="inline-flex justify-center items-center ml-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -234,14 +236,101 @@
             </div>
         </div>
 
-        <!-- Sidebar end -->
-
         <!-- Main Content -->
         <div class="ml-64 p-6">
-            <h1 class="text-2xl font-bold mb-6">Customers</h1>
+           
+            <div class="container mx-auto">
+                <!-- First Row -->
+                <div class="flex justify-between items-center mb-4">
+                    <input type="text" placeholder="Search by Customer Phone" class="p-2 border rounded">
+                    <div class="flex space-x-4">
+                        <select class="p-2 border rounded">
+                            <option>Status</option>
+                            <option>Pending</option>
+                            <option>Processing</option>
+                        </select>
+                        <select class="p-2 border rounded">
+                            <option>Order Limits</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                        </select>
+                        <select class="p-2 border rounded">
+                            <option>Method</option>
+                            <option>Cash</option>
+                            <option>Card</option>
+                        </select>
+                        <button class="bg-blue-500 text-white p-2 rounded">Download All Orders</button>
+                    </div>
+                </div>
+        
+                <!-- Second Row -->
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex space-x-4">
+                        <input type="date" class="p-2 border rounded">
+                        <input type="date" class="p-2 border rounded">
+                        <button class="bg-blue-500 text-white p-2 rounded">Filter</button>
+                    </div>
+                </div>
+        
+                <!-- Table -->
+                <div class="bg-white shadow-md rounded">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="p-3 text-left">INVOICE NO</th>
+                                <th class="p-3 text-left">PHONE</th>
+                                <th class="p-3 text-left">ORDER TIME</th>
+                                <th class="p-3 text-left">CUSTOMER NAME</th>
+                                <th class="p-3 text-left">METHOD</th>
+                                <th class="p-3 text-left">AMOUNT</th>
+                                <th class="p-3 text-left">STATUS</th>
+                                <th class="p-3 text-left">ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="p-3">10834</td>
+                                <td class="p-3">0171575549</td>
+                                <td class="p-3">2 Feb, 2025 7:10 PM</td>
+                                <td class="p-3">Md. National Alam</td>
+                                <td class="p-3">Cash</td>
+                                <td class="p-3">15919.00</td>
+                                <td class="p-3">Pending</td>
+                                <td class="p-3">
+                                    <button class="bg-blue-500 text-white p-1 rounded">INVOICE</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-3">10629</td>
+                                <td class="p-3">+8801677428980</td>
+                                <td class="p-3">2 Feb, 2025 6:24 PM</td>
+                                <td class="p-3">Bifai</td>
+                                <td class="p-3">Cash</td>
+                                <td class="p-3">15959.00</td>
+                                <td class="p-3">Processing</td>
+                                <td class="p-3">
+                                    <button class="bg-blue-500 text-white p-1 rounded">INVOICE</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-3">10628</td>
+                                <td class="p-3">01748260553</td>
+                                <td class="p-3">2 Feb, 2025 6:22 PM</td>
+                                <td class="p-3">Shariful</td>
+                                <td class="p-3">Cash</td>
+                                <td class="p-3">15959.00</td>
+                                <td class="p-3">Processing</td>
+                                <td class="p-3">
+                                    <button class="bg-blue-500 text-white p-1 rounded">INVOICE</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
            
 
-            
+
 
 
 
@@ -254,8 +343,7 @@
     </div>
     </div>
 
-    <!-- Flowbite JS CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.3.0/dist/flowbite.min.js"></script>
+ 
 
 
 
